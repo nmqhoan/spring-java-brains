@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: movie-catalog-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: false
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "hystrix.stream"
+          - "*"
+
