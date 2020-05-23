@@ -6,11 +6,15 @@ import io.javabrains.moviecatalogservice.models.CatalogItem;
 import io.javabrains.moviecatalogservice.models.Movie;
 import io.javabrains.moviecatalogservice.models.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class MovieInfoService {
+
+    @Value("${eureka.instance.instance-id}")
+    private String instanceId;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -24,7 +28,7 @@ public class MovieInfoService {
         })
     public CatalogItem getCatalogItem(Rating rating){
         Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(),Movie.class);
-        return new CatalogItem(movie.getName(),rating.getDesc(),rating.getRating());
+        return new CatalogItem(movie.getName(),rating.getDesc(),rating.getRating(),instanceId);
     }
 
     private CatalogItem getFallbackCatalogItem(Rating rating){

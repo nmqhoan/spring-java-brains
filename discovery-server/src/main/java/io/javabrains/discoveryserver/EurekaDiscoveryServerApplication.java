@@ -12,4 +12,16 @@ public class EurekaDiscoveryServerApplication {
 		SpringApplication.run(EurekaDiscoveryServerApplication.class, args);
 	}
 
+//	@RefreshScope
+//	@RestController
+//	class MessageRestController {
+//
+//		@Value("${my.greeting}")
+//		private String message;
+//
+//		@RequestMapping("/message")
+//		String getMessage() {
+//			return this.message;
+//		}
+//	}
 }

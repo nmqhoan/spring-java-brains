@@ -1,0 +1,19 @@
+#server:
+#  port: 9090
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    preferIpAddress: false
+#    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#
+##zuul:
+#  #Service will be mapped under the /api URI
+##  prefix: /api
+##  Uncomment to disable auto-registering all services read from Eureka
+##  ignoredServices: '*'
+#spring:
+#  application:
+#    name: zuul-api-gateway-server
